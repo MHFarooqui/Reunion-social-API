@@ -43,7 +43,7 @@ router.post('/api/unfollow/:id', jwtHelper.verifyToken, async (req, res) => {
         res.json({ isSuccess: false, message: 'Already not following' });
     } else {
         let response = await dbHelper.executeQuery({ text: `DELETE FROM followings WHERE following = $1 AND User_Id = $2`, values: [userToBeUnfollowed, authUser.id] });
-        res.json({ isSuccess: response.rowCount == 0, message: 'UnFollowed' });
+        res.json({ isSuccess: response.rowCount > 0, message: 'UnFollowed' });
     }
 })
 
