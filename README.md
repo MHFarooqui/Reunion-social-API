@@ -1,6 +1,8 @@
 # **Reunion social API**
 github repo: <https://github.com/MHFarooqui/Reunion-social-API/tree/features/db-design>
 
+- API is hosted on heroku and can be tested [here](https://reunion-social-api.herokuapp.com/api)
+
 
 # **LOGIN DETAILS**
  - There are 4 users seeded into db. details of which can be found in [dbScript file](https://github.com/MHFarooqui/Reunion-social-API/blob/main/dbScript.sql). to get started quickly use below user: 
