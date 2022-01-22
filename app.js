@@ -17,5 +17,5 @@ app.get('/api',  (req, res) => res.send({
 }));
 
 app.use(routes);
-
-app.listen(process.env.PORT_NUMBER || 5000, () => console.log("listning to port 5000"));
+let portNumber = process.env.PORT_NUMBER || 5000;
+app.listen(portNumber, () => console.log(`listning on port ${portNumber}`));
