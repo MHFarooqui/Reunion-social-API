@@ -25,11 +25,11 @@ Id serial primary key,
 Name VARCHAR(300),
 Email VARCHAR(300),
 Password VARCHAR(300),
-Is\_Active boolean DEFAULT true,
-Created\_On TIMESTAMP  DEFAULT now(),
-Updated\_On TIMESTAMP  DEFAULT now(),
-Created\_By INT,
-Updated\_By INT
+Is_Active boolean DEFAULT true,
+Created_On TIMESTAMP  DEFAULT now(),
+Updated_On TIMESTAMP  DEFAULT now(),
+Created_By INT,
+Updated_By INT
 );
 ```
 
@@ -38,14 +38,14 @@ Updated\_By INT
 ```
 CREATE TABLE Posts(
 Id serial primary key,
-Posted\_On VARCHAR(300),
-Is\_Active boolean DEFAULT true,
+Posted_On VARCHAR(300),
+Is_Active boolean DEFAULT true,
 Title varchar(300) NOT NULL,
 Description varchar(300) NOT NULL,
-Created\_On TIMESTAMP  DEFAULT now(),
-Updated\_On TIMESTAMP  DEFAULT now(),
-Created\_By INT,
-Updated\_By INT
+Created_On TIMESTAMP  DEFAULT now(),
+Updated_On TIMESTAMP  DEFAULT now(),
+Created_By INT,
+Updated_By INT
 );
 ```
 
@@ -54,13 +54,13 @@ Updated\_By INT
 ```
 CREATE TABLE Comments(
 Id serial primary key,
-Post\_Id INT REFERENCES Post (Id),
-Comment\_Text VARCHAR(300) NOT NULL,
-Is\_Active boolean DEFAULT true,
-Created\_On TIMESTAMP  DEFAULT now(),
-Updated\_On TIMESTAMP  DEFAULT now(),
-Created\_By INT,
-Updated\_By INT
+Post_Id INT REFERENCES Post (Id),
+Comment_Text VARCHAR(300) NOT NULL,
+Is_Active boolean DEFAULT true,
+Created_On TIMESTAMP  DEFAULT now(),
+Updated_On TIMESTAMP  DEFAULT now(),
+Created_By INT,
+Updated_By INT
 
 );
 ```
@@ -70,25 +70,25 @@ Updated\_By INT
 ```
 CREATE TABLE Followings(
 Id serial primary key,
-User\_Id INT REFERENCES Users (Id),
+User_Id INT REFERENCES Users (Id),
 Following INT REFERENCES Users (Id),
-Created\_On TIMESTAMP  DEFAULT now(),
-Updated\_On TIMESTAMP  DEFAULT now(),
-Created\_By INT,
-Updated\_By INT
+Created_On TIMESTAMP  DEFAULT now(),
+Updated_On TIMESTAMP  DEFAULT now(),
+Created_By INT,
+Updated_By INT
 );
 ```
 
-**Post\_Likes**
+**Post_Likes**
 
 ```
-CREATE TABLE Post\_LIKES(
+CREATE TABLE Post_LIKES(
 Id serial primary key,
-User\_Id INT REFERENCES Users (Id),
-Post\_Id INT REFERENCES Posts(Id),
-Is\_Liked boolean DEFAULT false,
-Created\_On TIMESTAMP  DEFAULT now(),
-Updated\_On TIMESTAMP  DEFAULT now()
+User_Id INT REFERENCES Users (Id),
+Post_Id INT REFERENCES Posts(Id),
+Is_Liked boolean DEFAULT false,
+Created_On TIMESTAMP  DEFAULT now(),
+Updated_On TIMESTAMP  DEFAULT now()
 );
 ```
 
