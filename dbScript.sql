@@ -14,16 +14,6 @@ CREATE TABLE Users (
 );
 
 ------------------------------
--- SEED USERS TABLE --
-------------------------------
-INSERT INTO users (name, email, password)
-values 
-	('jhon', 'jhon@gmail.com', 'jhon'),
-	('kevin', 'kevin@gmail.com', 'kevin'),
-	('sam',	'sam@gmail.com', 'sam'),
-	('Roy',	'Roy@gmail.com', 'Roy');
-
-------------------------------
 -- CREATE FOLLOWINGS TABLE --
 ------------------------------
 CREATE TABLE Followings(
@@ -51,17 +41,6 @@ CREATE TABLE Posts(
 );
 
 ------------------------------
--- SEED POSTS TABLE--
-------------------------------
-INSERT INTO posts (title, description, Created_By)
-values 
-	('post 1', 'Successfully submited post 1', 1),
-	('post 2', 'Successfully submited post 2', 1),
-	('post 3', 'Successfully submited post 3', 2),
-	('post 4', 'Successfully submited post 4', 3);
-	
-
-------------------------------
 -- CREATE POST_LIKES TABLE --
 ------------------------------
 CREATE TABLE Post_LIKES(
@@ -87,3 +66,25 @@ CREATE TABLE Comments(
   Updated_By INT
 );
 
+
+------------------------------
+-- SEED USERS TABLE --
+------------------------------
+INSERT INTO users (name, email, password)
+values 
+	('jhon', 'jhon@gmail.com', 'jhon'),
+	('kevin', 'kevin@gmail.com', 'kevin'),
+	('sam',	'sam@gmail.com', 'sam'),
+	('Roy',	'Roy@gmail.com', 'Roy');
+
+
+------------------------------
+-- SEED POSTS TABLE--
+------------------------------
+INSERT INTO posts (title, description, Created_By)
+values 
+	('post 1', 'Successfully submited post 1', 1),
+	('post 2', 'Successfully submited post 2', 1),
+	('post 3', 'Successfully submited post 3', 2),
+	('post 4', 'Successfully submited post 4', 3);
+	
