@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "nodemon": "nodemon ./app.js",
-    "dev": "node ./app.js",
-    "start": "node ./app.js"
+    "dev": "node ./app.js"
   },
   "repository": {
     "type": "git",
