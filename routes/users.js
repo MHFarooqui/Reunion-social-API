@@ -52,7 +52,7 @@ router.get('/api/user', jwtHelper.verifyToken, async (req, res) => {
     let response = await dbHelper.executeQuery({ text: `SELECT 	u.name username,
     SUM(CASE fngs.user_id WHEN 1 THEN 1 ELSE 0 END) followers, 
     SUM(CASE fngs.following WHEN 1 THEN 1 ELSE 0 END) followings 
-    FROM users u JOIN followings fngs ON (u.id = fngs.user_id OR u.id = fngs.following)
+    FROM users u full outer JOIN followings fngs ON (u.id = fngs.user_id OR u.id = fngs.following)
     WHERE u.id = $1
     GROUP BY u.name`, values: [ authUser.id] });
     res.json({isSuccess: !!response.rows[0], message:response.rows[0]});
