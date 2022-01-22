@@ -42,7 +42,7 @@ router.post('/api/unlike/:id', jwtHelper.verifyToken, async (req,res) => {
 
 router.get('/api/posts/:id', jwtHelper.verifyToken, async (req,res) => {
     let postId = req.params.id;
-    let postResult = await dbHelper.executeQuery({text:`SELECT p.id, p.title, p.description,p.created_on, COUNT(pl.is_liked)  likes, p.created_by FROM posts p join post_likes pl on p.id = pl.post_id
+    let postResult = await dbHelper.executeQuery({text:`SELECT p.id, p.title, p.description,p.created_on, COUNT(pl.is_liked)  likes, p.created_by FROM posts p full outer join post_likes pl on p.id = pl.post_id
     WHERE p.id = $1
     group by  p.id, p.title, p.description, p.created_on,p.created_by`,values: [postId]});
     let commentResult = await dbHelper.executeQuery({text:"SELECT id, comment_text AS text, created_on, post_id, created_by  FROM comments WHERE post_id = $1;",values: [postId]});
