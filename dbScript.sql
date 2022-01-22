@@ -57,7 +57,7 @@ CREATE TABLE Post_LIKES(
 ------------------------------
 CREATE TABLE Comments(
   Id serial primary key,
-  Post_Id INT REFERENCES Post (Id),
+  Post_Id INT REFERENCES Posts (Id),
   Comment_Text VARCHAR(300) NOT NULL,
   Is_Active boolean DEFAULT true,
   Created_On TIMESTAMP  DEFAULT now(),
