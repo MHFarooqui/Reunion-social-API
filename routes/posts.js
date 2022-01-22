@@ -45,17 +45,17 @@ router.get('/api/posts/:id', jwtHelper.verifyToken, async (req,res) => {
     let postResult = await dbHelper.executeQuery({text:`SELECT p.id, p.title, p.description,p.created_on, COUNT(pl.is_liked)  likes, p.created_by FROM posts p join post_likes pl on p.id = pl.post_id
     WHERE p.id = $1
     group by  p.id, p.title, p.description, p.created_on,p.created_by`,values: [postId]});
-    let commentResult = await dbHelper.executeQuery({text:"SELECT id, comment_text text, created_on, post_id, created_by  FROM comments WHERE post_id = $1;",values: [postId]});
+    let commentResult = await dbHelper.executeQuery({text:"SELECT id, comment_text AS text, created_on, post_id, created_by  FROM comments WHERE post_id = $1;",values: [postId]});
     let postObject = postResult.rows[0];
     let commentObjects = commentResult.rows;
-    res.json({isSuccess: !!postObject , message: {...postObject,comments: commentObjects} });
+    res.json({isSuccess: !!postObject , message: {...postObject, comments: commentObjects} });
 
 });
 
 router.get('/api/all_posts', jwtHelper.verifyToken, async (req,res) => {
-    let postResult = await dbHelper.executeQuery({text:`SELECT p.id, p.title, p.description,p.created_on, COUNT(pl.is_liked) likes,p.created_by FROM posts p join post_likes pl on p.id = pl.post_id
+    let postResult = await dbHelper.executeQuery({text:`SELECT p.id, p.title, p.description,p.created_on, COUNT(pl.is_liked) likes,p.created_by FROM posts p full outer join post_likes pl on p.id = pl.post_id
     group by  p.id, p.title, p.description, p.created_on,p.created_by`});
-    let commentResult = await dbHelper.executeQuery({text:"SELECT id, comment_text text, created_on, post_id, created_by FROM comments;"});
+    let commentResult = await dbHelper.executeQuery({text:"SELECT id, comment_text AS text, created_on, post_id, created_by FROM comments;"});
     let postObjects = postResult.rows;
     let commentObjects = commentResult.rows;
     let allPosts = postObjects.map(p => {
